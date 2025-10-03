@@ -27,7 +27,13 @@
 					scrt2URL: 'https://tr1755503902062.my.salesforce-scrt.com'
 				}
 			);
-		} catch (err) {
+      window.addEventListener('onEmbeddedMessagingConversationStarted', function (event) {
+        console.log('Conversation started: ', event);
+      });
+      window.addEventListener('onEmbeddedMessageSent', function (event) {
+        console.log('Conversation onEmbeddedMessageSent: ', event);
+      });
+     } catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
 	};
