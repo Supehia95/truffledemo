@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My SDR Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+</head>
+<body style="margin:0">
+  <div class="desktopsize">
+  <img src = './assets/image.png' width="100%" alt = 'My GitHub Website'>
+
+  </div>
+  <div class="mobilesize">
+  <img src = './assets/imagephone.png' width="100%" alt = 'My GitHub Website'>
+  </div>
+</body>
+</html>
+<script type='text/javascript'>
+	function initEmbeddedMessaging() {
+		try {
+			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
+
+			embeddedservice_bootstrap.init(
+				'00DKj00000UY7YZ',
+				'UserTesting',
+				'https://tr1755503902062.my.site.com/ESWUserTesting1757843269194',
+				{
+					scrt2URL: 'https://tr1755503902062.my.salesforce-scrt.com'
+				}
+			);
+		} catch (err) {
+			console.error('Error loading Embedded Messaging: ', err);
+		}
+	};
+</script>
+<script type='text/javascript' src='https://tr1755503902062.my.site.com/ESWUserTesting1757843269194/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+
+<style>
+  .embeddedMessagingFrame.eswIsDesktop.isMaximized{
+/*width: 100%;*/
+  }
+  .mobilesize{
+      display: none;
+    }
+
+     .desktopsize{
+      display: block;
+    }
+
+  @media only screen and (max-width: 768px) {
+    .mobilesize{
+      display: block;
+    }
+
+     .desktopsize{
+      display: none;
+    }
+  }
+</style>
