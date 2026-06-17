@@ -7,13 +7,19 @@
 <body style="margin:0">
   <div class="desktopsize">
      Web Chat Setup 
-
+    <div> <button onclick="startchat()"> Start Chat</button> </div>
   </div>
   
 </body>
 </html>
 <script type='text/javascript'>
 
+function doCallAgentforce() {
+           
+    
+    embeddedservice_bootstrap.utilAPI.launchChat();
+}
+	
 	function pushPrechatFields() {
 		try {
 		  if (window.embeddedservice_bootstrap?.prechatAPI?.setHiddenPrechatFields) {
@@ -55,6 +61,11 @@
 	};
 </script>
 <script type='text/javascript' src='https://tr1755503902062.my.site.com/ESWTruffelDemo1759523968902/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+	<style>
+		.embeddedMessagingConversationButtonWrapper .embeddedMessagingConversationButton {
+	    visibility: hidden;
+	}
 
+</style>
  
  
