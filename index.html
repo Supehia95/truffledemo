@@ -6,19 +6,31 @@
 </head>
 <body style="margin:0">
   <div class="desktopsize">
-  <img src = './assets/image.png' width="100%" alt = 'My GitHub Website'>
+     Web Chat Setup 
 
   </div>
-  <div class="mobilesize">
-  <img src = './assets/imagephone.png' width="100%" alt = 'My GitHub Website'>
-  </div>
+  
 </body>
 </html>
 <script type='text/javascript'>
+
+	function pushPrechatFields() {
+		try {
+		  if (window.embeddedservice_bootstrap?.prechatAPI?.setHiddenPrechatFields) {
+		  
+			const preChatFields = {"url": window.location.href,"product_name":"Daxko Operations"}; // pass more params
+			console.log("Prechat fields sent:", preChatFields);
+			embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields(preChatFields);
+		  }
+		} catch (e) {
+		  console.warn("Prechat push failed:", e);
+		}
+	}
+
+	
 	function initEmbeddedMessaging() {
 		try {
 			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-
 			embeddedservice_bootstrap.init(
 				'00DKj00000UY7YZ',
 				'TruffelDemo',
@@ -28,12 +40,15 @@
 				}
 			);
 
-       window.addEventListener('onEmbeddedMessagingConversationStarted', function (event) {
-        console.log('Conversation started: ', event);
-      });
-      window.addEventListener('onEmbeddedMessageSent', function (event) {
-        console.log('Conversation onEmbeddedMessageSent: ', event);
-      });
+			window.addEventListener("onEmbeddedMessagingReady", () => {
+           		pushPrechatFields();
+       		});
+			window.addEventListener('onEmbeddedMessagingConversationStarted', function (event) {
+				console.log('Conversation started: ', event);
+			});
+			window.addEventListener('onEmbeddedMessageSent', function (event) {
+				console.log('Conversation onEmbeddedMessageSent: ', event);
+			});
 		} catch (err) {
 			console.error('Error loading Embedded Messaging: ', err);
 		}
@@ -42,25 +57,4 @@
 <script type='text/javascript' src='https://tr1755503902062.my.site.com/ESWTruffelDemo1759523968902/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
 
  
-<style>
-  .embeddedMessagingFrame.eswIsDesktop.isMaximized{
-/*width: 100%;*/
-  }
-  .mobilesize{
-      display: none;
-    }
-
-     .desktopsize{
-      display: block;
-    }
-
-  @media only screen and (max-width: 768px) {
-    .mobilesize{
-      display: block;
-    }
-
-     .desktopsize{
-      display: none;
-    }
-  }
-</style>
+ 
